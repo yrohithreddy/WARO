@@ -1,0 +1,52 @@
+﻿@using CharityOrganization.Models
+
+<div id="myForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" id="linkClose" arial-label="close" data-dismiss="modal">&times;</a>
+                    <h4 class="modal-title">Login</h4>
+                    <div id="messenger"></div>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="txtUserName">User Name</label>
+                        <input class="form-control" name="userName" id="txtUserName" placeholder="Enter User Name" type="text" />
+                        @* @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter User Name" } })*@
+                        @*@Html.ValidationMessageFor(model => model.EmailAddress)*@
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPassword">Password</label>
+                        <input class="form-control" name="password" id="txtPassword" placeholder="Enter User Name" type="password" />
+                        @*@Html.EditorFor(model => model.CustomerPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Password", autocomplete = "off" } })*@
+                        @*@Html.ValidationMessageFor(model => model.CustomerPassword)*@
+                    </div>
+                    <div class="form-control">
+                        <input name="RememberMe" type="checkbox" id="chkRememberMe" />
+                        <label for="chkRememberMe">Remember Me</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*<input type="submit" class="btn btn-primary" value="LogIn" />*@
+                    <a href="#" class="btn btn-primary" id="Login">LogIn</a>
+                    <button class="btn btn-primary" id="btnClose" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    
+
+    <div class="col-md-4">
+        @*<section id="socialLoginForm">
+                @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>*@
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

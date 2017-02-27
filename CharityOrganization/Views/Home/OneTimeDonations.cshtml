@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "OneTimeDonations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" height="50px">
+
+            <img src="~/Images/michelangelo-image.jpg" class="pull-right img-responsive" />
+
+            <p class="lead"><h3 style="font-family:'Palatino Linotype'"><strong>One Time Donations</strong></h3></p>
+            <p style="font-family:'Palatino Linotype'">
+                The help you give here, will feed a child or support a senior citizen to run their daily needs,and perhaps can do more. To do so, find a charity near by and donate to support their work.
+            </p>
+        </div>
+    </div>
+</div>
+<br />
+
+@using (Html.BeginForm(Html.BeginForm("OneTimeDonations", "Home", FormMethod.Post, new { id = "donationForm" })))
+{
+    Html.RenderPartial("~/Views/Shared/DonationsOrg.cshtml");
+  
+}
+
+
+<script>
+    var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+
+        $('#orgCheck').click(function () {
+            if(userAuthorized)
+            {
+                $('.drpDownCity').val('');
+                $('#donationForm').submit();
+            }
+            else
+            {
+                $('#modalLogIn').modal('show');
+            }
+        });
+
+        $('#DonationsBtn').click(function () {
+            if(userAuthorized)
+            {
+                $('.drpDownOrg').val('');
+                $('#donationForm').submit();
+            }
+            else
+            {
+                $('#modalLogIn').modal('show');
+
+            }
+        });
+
+</script>

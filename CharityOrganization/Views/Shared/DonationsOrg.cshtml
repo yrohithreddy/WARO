@@ -1,0 +1,47 @@
+﻿<div class="container">
+
+    <p style="font-family:'Palatino Linotype'"><strong>Choose one of the below ways to find and give to the charity</strong></p>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-xs-5">
+                <div class="cityDesign">
+                    <div class="col-xs-12">
+                        <div>
+                            <p style="font-family:'Palatino Linotype'"><strong>Search for charities in your city</strong></p>
+                            <img src="~/Images/pin-google.jpg" class="img-responsive" />
+                        </div>
+                        <div class="form-group">
+
+                            @Html.DropDownList("City", null, "Select Location", new { @class = "form-control drpDownCity" })
+
+                            @*<a href="#" class="btn btn-primary" id="oneTimeDonationsBtn">Go</a>*@
+
+                            <input name="orgCityCheck" id="DonationsBtn" type="button" value="Go" class="btn btn-primary" />
+                            @*<input type="submit" value="Go" class="btn btn-default goDesign" />*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-5">
+                <div class="cityDesign">
+                    <div class="col-xs-12">
+                        <div>
+                            <p style="font-family:'Palatino Linotype'"><strong>Choose a charity to help</strong></p>
+                            <img src="~/Images/magnifier.jpg" class="img-responsive" />
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DropDownList("OrganisationNames", null, "Find an Organization", new { @class = "form-control drpDownOrg" })
+                            <input name="orgCheck" id="orgCheck" type="button" value="Go" class="btn btn-primary" />
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

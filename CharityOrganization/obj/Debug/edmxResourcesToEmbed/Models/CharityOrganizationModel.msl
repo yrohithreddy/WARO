@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CharityOrganizationModelStoreContainer" CdmEntityContainer="CharityOrganizationContext">
+    <EntitySetMapping Name="CreateAccounts">
+      <EntityTypeMapping TypeName="CharityOrganizationModel.CreateAccount">
+        <MappingFragment StoreEntitySet="CreateAccount">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="VerifyEmailAddress" ColumnName="VerifyEmailAddress" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+          <ScalarProperty Name="CreatePassword" ColumnName="CreatePassword" />
+          <ScalarProperty Name="VerifyPassword" ColumnName="VerifyPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerPayments">
+      <EntityTypeMapping TypeName="CharityOrganizationModel.CustomerPayment">
+        <MappingFragment StoreEntitySet="CustomerPayments">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Organization" ColumnName="Organization" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="NameOnCard" ColumnName="NameOnCard" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="CardExpiryDate" ColumnName="CardExpiryDate" />
+          <ScalarProperty Name="CardCVV" ColumnName="CardCVV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogInCustomers">
+      <EntityTypeMapping TypeName="CharityOrganizationModel.LogInCustomer">
+        <MappingFragment StoreEntitySet="LogInCustomer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organisations">
+      <EntityTypeMapping TypeName="CharityOrganizationModel.Organisation">
+        <MappingFragment StoreEntitySet="Organisation">
+          <ScalarProperty Name="OrganisationName" ColumnName="OrganisationName" />
+          <ScalarProperty Name="OrganisationStreetNo" ColumnName="OrganisationStreetNo" />
+          <ScalarProperty Name="OrganisationCity" ColumnName="OrganisationCity" />
+          <ScalarProperty Name="OrganisationState" ColumnName="OrganisationState" />
+          <ScalarProperty Name="OrganisationZipCode" ColumnName="OrganisationZipCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaveCardDetails">
+      <EntityTypeMapping TypeName="CharityOrganizationModel.SaveCardDetail">
+        <MappingFragment StoreEntitySet="SaveCardDetails">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="NameOnCard" ColumnName="NameOnCard" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="CardExpiryDate" ColumnName="CardExpiryDate" />
+          <ScalarProperty Name="CardCVV" ColumnName="CardCVV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

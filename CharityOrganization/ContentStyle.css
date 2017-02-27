@@ -1,0 +1,109 @@
+﻿.thumbnail
+{
+    max-height:20px;
+}
+
+.navbar-custom
+{
+     color: #000000;
+     background-color:#005A31 !important;
+    /*background-color: #262216;*/
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+   color: #0091c1;
+   background-color: transparent;
+}
+
+body
+{
+    padding-top:50px;
+    background-color:#edd9c0;
+    
+}
+
+.no-gutter > [class*='col-']
+{
+    padding-left:0;
+    padding-right:0;
+}
+
+.nopadding
+{
+    padding: 0 !important;
+   margin: 0 !important;
+}
+
+.container [class^="col"]
+{
+    padding-left:0;
+    padding-right:0;
+}
+
+#divLogo
+{
+    padding-bottom:0;
+    padding-top:0;
+}
+
+.navbar.navbar-custom
+ {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.HomeFooter
+{
+    color: white;
+    background-color: #262216;
+}
+
+#socialNetLinks
+{
+    list-style:none;
+}
+
+#WelcomeNote
+{
+    color: #D5D5D5;
+}
+
+.dropDown
+{
+    width:300px;
+    display: inline-block;
+    padding: 10px 15px;
+font-size: 20px;
+border-radius: 0;
+-webkit-appearance: none;
+border: 1px solid transparent;
+}
+
+.cityDesign
+{
+    margin-top:10px;
+    padding: 20px;
+    outline: 2px solid #ccc;
+    outline-offset: -10px;
+}
+
+/*.goDesign
+{
+    display: inline-block;
+padding: 10px 15px;
+font-size: 20px;
+border-radius: 0;
+-webkit-appearance: none;
+border: 1px solid transparent;
+}*/
+
+.charityInCityTextDesign
+{
+    font-family:'Palatino Linotype';
+    color:chocolate;
+}
+
+.btnRedesign
+{
+    background-color:chocolate;
+    color: #ffffff;
+}

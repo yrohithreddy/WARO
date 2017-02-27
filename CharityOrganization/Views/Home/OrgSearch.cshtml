@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CharityOrganization.Models.Organisation>
+
+@{
+    ViewBag.Title = "SearchOrgWord";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form class="donateForm">
+    @foreach (var item in Model)
+    {
+        if (item.OrganisationCity == ViewBag.SearchOrgWord)
+        {
+
+            <div class="container cityDesign">
+                <div class="col-xs-8">
+                    <div style="font-family:'Palatino Linotype'; color:#005A31; font-size:large">
+                        @Html.DisplayFor(modelItem => item.OrganisationName, new { htmlAttributes = new { @class = "charityInCityTextDesign", @id = "OrgText_" + item.OrganisationName } })
+                    </div>
+                    <div style="font-family:'Palatino Linotype';font-size:medium">
+                        @Html.DisplayFor(modelItem => item.OrganisationStreetNo)
+                    </div>
+                    <div style="font-family:'Palatino Linotype';font-size:medium">
+                        @Html.DisplayFor(modelItem => item.OrganisationCity)
+                    </div>
+                    <div style="font-family:'Palatino Linotype';font-size:medium">
+                        @Html.DisplayFor(modelItem => item.OrganisationState)
+                    </div>
+                    <div style="font-family:'Palatino Linotype';font-size:medium">
+                        @Html.DisplayFor(modelItem => item.OrganisationZipCode)
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2">
+                    @*<input type="button" value="Donate" id="btnDonate_@item.OrganisationName" class="btn btn-primary btnRedesign" style="background-color:#005A31;color: #ffffff;" />*@
+                    @*@Html.ActionLink("Donate","Donate","Home",new { Organization = "Tech Org"})*@
+                    @Html.ActionLink("Donate", "Donate", new { Organization = item.OrganisationName })
+                </div>
+            </div>
+
+        }
+
+    }
+</form>
+
+@*<script type="text/javascript">
+    window.onload = codeAddress;
+    function codeAddress()
+    {
+        alert('ok');
+    }
+    </script>
+
+@*<script type="text/javascript">
+    $('#btnDonate').click(function () {
+        @Url.Action("Donate","Home")
+    });
+</script>*@
+
+

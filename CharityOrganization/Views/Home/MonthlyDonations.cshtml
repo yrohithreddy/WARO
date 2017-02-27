@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "MonthlyDonations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" height="50px">
+
+            <img src="~/Images/michelangelo-image.jpg" class="pull-right img-responsive" />
+
+            <p class="lead"><h3 style="font-family:'Palatino Linotype'"><strong>Monthly Donations</strong></h3></p>
+            <p style="font-family:'Palatino Linotype'">
+                You can help a child to get his education going on along with the daily needs to sustain through monthly donation to the Organization.                
+            </p>
+        </div>
+    </div>
+</div>
+<br />
+
+@using (Html.BeginForm("MonthlyDonations","Home",FormMethod.Post, new { id = "donationForm" }))
+{
+    Html.RenderPartial("~/Views/Shared/DonationsOrg.cshtml");
+}
+
+<script>
+    var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+
+        $('#orgCheck').click(function () {
+            if(userAuthorized)
+            {
+                $('.drpDownCity').val('');
+                $('#donationForm').submit();
+            }
+            else
+                {
+                $('#modalLogIn').modal('show');
+            }
+        });
+
+        $('#DonationsBtn').click(function () {
+            if(userAuthorized)
+            {
+                $('.drpDownOrg').val('');
+                $('#donationForm').submit();
+            }
+            else
+            {
+                $('#modalLogIn').modal('show');
+            }
+        });
+   
+</script>
+

@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("head", false)
+
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <link href="~/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/ContentStyle.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="~/Scripts/jquery-1.7.1.min.js"></script>*@
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnSearch').click(function () {
+                var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+                if(userAuthorized)
+                {
+                if($('#txtFindOrg').val()=="")
+                {
+                    alert("No Organization Preferred");
+                }
+                else
+                {
+                    @*var orgSearchWord = $('#txtFindOrg').val();
+                    $.ajax({
+                        url: '@Url.Action("OrgSearch", "Home")',
+                        data: {'orgSearchWord':orgSearchWord}                      
+                    });*@
+                    var orgSearchWord = $('#txtFindOrg').val();
+                    var url = '@Url.Action("OrgSearch", "Home")?OrgSearchWord=' + orgSearchWord; 
+                    window.location.href=url;
+                    //$('#btnSearch').submit();
+                    $('.searchForm').submit();
+                }
+                }
+                else
+                {
+                    $('#modalLogIn').modal('show');
+                }
+            });
+
+            $('#btnClose').click(function () {
+                $('#modalLogIn').modal('hide');
+            });
+            $('#temp').click(function () {
+                $('#modalLogIn').show();
+            });
+
+            $('#linkClose').click(function () {
+                $('#modalLogIn').modal('hide');
+            });
+
+            $("#Login").click(function () {
+                
+                $.ajax(
+                    {
+
+                        url: '@Url.Action("Login","Account")',
+
+                        
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        
+                        dataType: 'json',
+                        success: function (result) {
+
+                            if (result.toString() == "Invalid Login Attempt")
+                            {
+                                $('#messenger').html('<div style="color:red">' + result + '</div>');
+
+                            }
+                            else if (result.toString() == "Success")
+                            {
+                                $('#messenger').html('<div style="color:red">' + result + '</div>');
+                            }
+                            else if (result.toString() == "Not successful")
+                            {
+                                $('#messenger').html('<div style="color:red">' + result + '</div>');
+                            }
+
+                            
+
+                        },
+                        error: function (error) {
+                            $('#messenger').html('<div style="color:red">Invalid Login</div>');
+                        }
+                        
+
+                    });
+
+            });
+        });
+    </script>
+</head>
+<body style="background-color:#e3e3e3">
+    <div class="col-lg-12">
+        <div class="container">
+            <nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color:#667467">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="mainNavbar">
+                    <ul class="nav navbar-nav">
+                        <li style="color:white">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Donations
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("One Time Donations", "OneTimeDonations", "Home")</li>
+                                <li>@Html.ActionLink("Monthly Donations", "MonthlyDonations", "Home")</li>
+                            </ul>
+
+                        </li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact Us", "ContactUs", "Home")</li>
+                        <li>@Html.ActionLink("Build An Idea", "BuildAnIdea", "Home")</li>
+                    </ul>
+                    <form class="navbar-form navbar-left searchForm" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Find an Organization" id="txtFindOrg" />
+                        </div>
+                            
+                                <button type="button" class="btn btn-default" id="btnSearch">Go</button>
+                                
+               
+                    </form>
+                    @*Link for Log In*@
+                    @using Microsoft.AspNet.Identity
+                   @if (Request.IsAuthenticated)
+                   {
+                       using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                       {
+                        @Html.AntiForgeryToken()
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        </ul>
+                       }
+                   }
+                   else
+                   {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                @*<a href="#" id="temp" data-toggle="modal" data-target="#modalLogIn">Sign In</a>*@
+                                @Html.ActionLink("Sign In","Login","Account")
+                            </li>
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        </ul>
+                                    }
+
+
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="container" id="divLogo">
+            <div class="row no-gutter">
+                <div class="col-xs-3">
+                    <div style="max-height:90px;">
+                        <img src="~/Images/Logo4.png" class="img-responsive" />
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    @*<h1 class="text-justify"><em><strong>We All Are One!</strong></em></h1>*@
+
+                    <img src="~/Images/textlobo.png" />
+                </div>
+                @if (!Request.IsAuthenticated)
+                {
+                <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalLogIn" tabindex="-1">
+
+                    <div id="formContact">
+                        @*@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+                        @{ Html.RenderPartial("~/Views/Account/Login.cshtml");}
+                    </div>
+                </div>
+                }
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 nopadding">
+        @RenderBody()
+    </div>
+
+    @*Home Footer*@
+    <div class="col-xs-12">
+        <div class="col-xs-8">
+            <p class="lead">
+                WARO
+            </p>
+            <p>
+                <span class="h4">WARO</span> provides a way to help people, who are in need to get their daily needs through donations.
+            </p>
+        </div>
+        <div class="col-xs-4">
+            <div>
+                <h3>WARO</h3>
+            </div>
+            <div>
+                &nbsp;<a href="www.facebook.com"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

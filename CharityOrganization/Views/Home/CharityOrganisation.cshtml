@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CharityOrganization.Models.Organisation>
+
+@{
+    ViewBag.Title = "CharityOrganisation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+if (item.OrganisationName == ViewBag.OrgName)
+{
+    <div class="container cityDesign">
+        <div class="col-xs-8">
+            <div style="font-family:'Palatino Linotype'; color:#005A31; font-size:large">
+                @Html.DisplayFor(modelItem => item.OrganisationName, new { htmlAttributes = new { @class = "charityInCityTextDesign" } })
+            </div>
+            <div style="font-family:'Palatino Linotype';font-size:medium">
+                @Html.DisplayFor(modelItem => item.OrganisationStreetNo)
+            </div>
+            <div style="font-family:'Palatino Linotype';font-size:medium">
+                @Html.DisplayFor(modelItem => item.OrganisationCity)
+            </div>
+            <div style="font-family:'Palatino Linotype';font-size:medium">
+                @Html.DisplayFor(modelItem => item.OrganisationState)
+            </div>
+            <div style="font-family:'Palatino Linotype';font-size:medium">
+                @Html.DisplayFor(modelItem => item.OrganisationZipCode)
+            </div>
+        </div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-2">
+            <input type="button" value="Donate" class="btn btn-primary btnRedesign" style="background-color:#005A31;color: #ffffff;" />
+        </div>
+    </div>
+    }
+}
+
